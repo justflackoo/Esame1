@@ -20,13 +20,14 @@ public class ListaOrdinata {
     public boolean isEmpty(){return this.testa==null;}
     public boolean isFull(){return false;}
     
-    
+    //Inserimento in testa
     public void push(Imbarcazione i){
         Nodo q = new Nodo(i);
         q.next = testa;
         testa = q;
     }
-    
+
+    //Inserimento in coda
     public void append(Imbarcazione i){
         if(isEmpty()){push(i);
         }else{
@@ -38,7 +39,8 @@ public class ListaOrdinata {
             temp.next = q;
         }
     }
-    
+
+    //Inserimento secondo l'ordine definito dal compareTo
     public void insert(Imbarcazione i ){
         if(isEmpty() || testa.data.compareTo(i)>0){
             push(i);
@@ -52,13 +54,15 @@ public class ListaOrdinata {
             temp.next = q;
         }
     }
-    
+
+    //Rimuovi in testa
     public Imbarcazione pop(){
         Imbarcazione imb = testa.data;
         testa = testa.next;
         return imb;
     }
-    
+
+    //Rimuovi in coda
     public Imbarcazione pop_back(){
         if(testa.next==null){return pop();
         }else{
@@ -71,7 +75,8 @@ public class ListaOrdinata {
             return imb;
         }
     }
-    
+
+    //Rimuovi prima occorrenza
     public void delete(Imbarcazione imb){
         if(isEmpty()){System.out.println("Lista vuota");}
         
@@ -82,7 +87,8 @@ public class ListaOrdinata {
         if(temp.next==null){System.out.println("Elemento non trovato");}
         temp.next = temp.next.next;
     }
-    
+
+    //Ricerca di un elemento
     public boolean inLista(Imbarcazione imb){
         boolean trovato = false;
         Nodo temp = testa;
@@ -95,7 +101,8 @@ public class ListaOrdinata {
         }
         return trovato;
     }
-    
+
+    //Ricerca del massimo 
     public Imbarcazione ricercaMassimo(){
         Imbarcazione max = testa.data;
         Nodo temp = testa;
@@ -108,7 +115,8 @@ public class ListaOrdinata {
         }
         return max;
     }
-    
+
+    //Ricerca del minimo
     public Imbarcazione ricercaMinimo(){
         Imbarcazione min = testa.data;
         Nodo temp = testa;
